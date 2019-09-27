@@ -1,7 +1,14 @@
 :host {
   width: 100%;
+  display: flex;
 }
 
 table {
   width: 100%;
+}
+
+div {
+  margin: 10vh auto;
+  font-weight: bold;
+  font-size: 2rem;
 }

@@ -1,15 +1,14 @@
 import { TechnologiesState } from '../technologies.state';
-import { createReducer, on } from '@ngrx/store';
-import { load } from 'src/app/features/list/state/actions/list.actions';
-import { setError, set } from '../actions/technologies.actions';
+import { createReducer, on, Action } from '@ngrx/store';
+import { setError, set, load } from '../actions/technologies.actions';
 
 export const technologiesInitialState: TechnologiesState = {
-    entities: null,
+    entities: [],
     error: '',
     loading: false
 };
 
-export const technologiesReducer = createReducer(technologiesInitialState,
+const reducer = createReducer(technologiesInitialState,
     on(load, state => {
         return {
             ...state,
@@ -26,7 +25,12 @@ export const technologiesReducer = createReducer(technologiesInitialState,
     on(set, (state, action) => {
         return {
             ...state,
-            entities: [...action.technologies]
+            entities: [...action.technologies],
+            loading: false
         };
     })
 );
+
+export function technologiesReducer(state = technologiesInitialState, action: Action) {
+    return reducer(state, action);
+}

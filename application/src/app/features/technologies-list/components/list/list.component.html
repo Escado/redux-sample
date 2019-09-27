@@ -1,12 +1,16 @@
-<!-- <table #listTable mat-table [dataSource]="entities" class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let item"> {{item.id}} </td>
-    </ng-container>
+<table [@fadeIn] *ngIf="!state.loading" #listTable mat-table [dataSource]="state.entities" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Name </th>
         <td mat-cell *matCellDef="let item"> {{item.name}} </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['id', 'name'];"></tr>
-</table> -->
+    <ng-container matColumnDef="rating">
+        <th mat-header-cell *matHeaderCellDef> Rating </th>
+        <td mat-cell *matCellDef="let item"> {{item.rating}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="['name', 'rating']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['name', 'rating'];"></tr>
+</table>
+
+<div *ngIf="state.loading">
+    LOADING DATA
+</div>

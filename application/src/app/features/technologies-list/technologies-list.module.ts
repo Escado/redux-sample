@@ -6,6 +6,12 @@ import { ListComponent } from './components/list/list.component';
 import { TotalsComponent } from './components/totals/totals.component';
 import { EffectsModule } from '@ngrx/effects';
 import { TechnologiesEffects } from './state/effects/technologies.effects';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { technologiesReducer } from './state/reducers/technologies.reducer';
 
 
 
@@ -17,8 +23,14 @@ import { TechnologiesEffects } from './state/effects/technologies.effects';
     TotalsComponent,
   ],
   imports: [
+    StoreModule.forFeature('technologies-list', technologiesReducer),
     CommonModule,
-    EffectsModule.forFeature([TechnologiesEffects])
+    EffectsModule.forFeature([TechnologiesEffects]),
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    CommonModule,
+    FormsModule
   ],
 })
 export class TechnologiesListModule { }

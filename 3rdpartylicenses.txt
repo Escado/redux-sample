@@ -85,16 +85,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-@angular/material/button
-
-@angular/material/form-field
-
 @angular/material/table
 
 @angular/platform-browser
 MIT
 
 @angular/router
+MIT
+
+@ngrx/effects
 MIT
 
 @ngrx/store

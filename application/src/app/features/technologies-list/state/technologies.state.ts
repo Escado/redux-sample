@@ -7,6 +7,9 @@ export interface TechnologiesState {
     error: string;
 }
 
-export const technologiesStateSelector = createFeatureSelector<TechnologiesState>('technologies-state');
+export const technologiesStateSelector = createFeatureSelector<TechnologiesState>('technologies-list');
 
-export const technologiesEntitiesSelector = createSelector(technologiesStateSelector, state => state.entities);
+export const technologiesEntitiesSelector = createSelector(
+    technologiesStateSelector,
+    (state: TechnologiesState) => state.entities
+);
