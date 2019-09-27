@@ -1,0 +1,8 @@
+<div>
+    <mat-form-field>
+        <input [(ngModel)]="name" matInput placeholder="Name">
+    </mat-form-field>
+</div>
+<div>
+    <button mat-raised-button (keydown.enter)="onAdd()" (click)="onAdd()">Add</button>
+</div>

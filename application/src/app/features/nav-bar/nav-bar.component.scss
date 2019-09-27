@@ -1,0 +1,15 @@
+nav {
+  height: 20vh;
+  display: flex;
+  background: url(https://escado.github.io/img/bg.jpeg);
+  background-color: #575761;
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem black);
+
+  & div {
+    margin: auto;
+  }
+
+  & span {
+      margin: auto 0 auto 10vw;
+  }
+}
