@@ -5,13 +5,17 @@ import { InputComponent } from './components/input/input.component';
 import { ListComponent } from './components/list/list.component';
 import { TotalsComponent } from './components/totals/totals.component';
 import { EffectsModule } from '@ngrx/effects';
-import { TechnologiesEffects } from './state/effects/technologies.effects';
+import { TechnologiesListEffects } from './state/effects/technologies.list.effects';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 import { technologiesReducer } from './state/reducers/technologies.reducer';
+import { TechnologiesAppendEffects } from './state/effects/technologies.append.effects';
+import { TechnologiesStateName } from './state/technologies.state';
 
 
 
@@ -23,12 +27,14 @@ import { technologiesReducer } from './state/reducers/technologies.reducer';
     TotalsComponent,
   ],
   imports: [
-    StoreModule.forFeature('technologies-list', technologiesReducer),
+    StoreModule.forFeature(TechnologiesStateName, technologiesReducer),
+    EffectsModule.forFeature([TechnologiesListEffects, TechnologiesAppendEffects]),
     CommonModule,
-    EffectsModule.forFeature([TechnologiesEffects]),
     MatButtonModule,
     MatInputModule,
     MatTableModule,
+    MatOptionModule,
+    MatSelectModule,
     CommonModule,
     FormsModule
   ],

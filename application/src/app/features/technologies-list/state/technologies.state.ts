@@ -1,15 +1,29 @@
 import { TechnologyApiModel } from '../models/service.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-export interface TechnologiesState {
+export const TechnologiesStateName = 'technologies';
+
+export interface TechnologyAppendState {
+    entity: TechnologyApiModel;
+    loading: boolean;
+    error: string;
+}
+
+export interface TehcnologiesListState {
     entities: TechnologyApiModel[];
     loading: boolean;
     error: string;
 }
 
-export const technologiesStateSelector = createFeatureSelector<TechnologiesState>('technologies-list');
+export interface TechnologiesState {
+    listState: TehcnologiesListState;
+    appendState: TechnologyAppendState;
+}
 
-export const technologiesEntitiesSelector = createSelector(
-    technologiesStateSelector,
-    (state: TechnologiesState) => state.entities
-);
+export const technologiesStateSelector = createFeatureSelector<TechnologiesState>(TechnologiesStateName);
+
+export const technologiesAppendStateSelector = createSelector(technologiesStateSelector, state => state.appendState);
+
+export const technologiesListStateSelector = createSelector(technologiesStateSelector, state => state.listState);
+
+export const technologiesEntitiesSelector = createSelector(technologiesListStateSelector, state => state.entities);

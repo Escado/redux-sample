@@ -1,36 +1,13 @@
 import { TechnologiesState } from '../technologies.state';
-import { createReducer, on, Action } from '@ngrx/store';
-import { setError, set, load } from '../actions/technologies.actions';
+import { ActionReducer, combineReducers, Action } from '@ngrx/store';
+import { technologiesAppendStateReducer } from './technologies.append.reducer';
+import { technologiesListReducer } from './technologies.list.reducer';
 
-export const technologiesInitialState: TechnologiesState = {
-    entities: [],
-    error: '',
-    loading: false
-};
+const reducer: ActionReducer<TechnologiesState> = combineReducers({
+    appendState: technologiesAppendStateReducer,
+    listState: technologiesListReducer
+});
 
-const reducer = createReducer(technologiesInitialState,
-    on(load, state => {
-        return {
-            ...state,
-            loading: true
-        };
-    }),
-    on(setError, (state, action) => {
-        return {
-            ...state,
-            error: action.error,
-            loading: false
-        };
-    }),
-    on(set, (state, action) => {
-        return {
-            ...state,
-            entities: [...action.technologies],
-            loading: false
-        };
-    })
-);
-
-export function technologiesReducer(state = technologiesInitialState, action: Action) {
+export function technologiesReducer(state: TechnologiesState, action: Action) {
     return reducer(state, action);
 }

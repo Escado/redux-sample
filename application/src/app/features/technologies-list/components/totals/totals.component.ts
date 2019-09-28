@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TechnologiesState, technologiesEntitiesSelector } from '../../state/technologies.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-totals',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TotalsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<TechnologiesState>) { }
 
   ngOnInit() {
+    this.store.select(technologiesEntitiesSelector);
   }
 
 }

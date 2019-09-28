@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { ListModel } from 'src/app/features/list/models/list.model';
-import { TechnologiesState, technologiesEntitiesSelector, technologiesStateSelector } from '../../state/technologies.state';
 import { Store } from '@ngrx/store';
-import { TechnologyApiModel } from '../../models/service.model';
 import { transition, style, animate, trigger } from '@angular/animations';
+import { TehcnologiesListState, technologiesListStateSelector, technologiesEntitiesSelector } from '../../state/technologies.state';
+import { TechnologyApiModel } from '../../models/service.model';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list',
@@ -18,20 +19,31 @@ import { transition, style, animate, trigger } from '@angular/animations';
       ]),
       transition(':leave',
         animate(600, style({ opacity: 0 })))
+    ]),
+    trigger('expandIn', [
+      transition(':enter', [
+        style({ lineHeight: 0, height: 0, opacity: 0 }),
+        animate(300)
+      ])
     ])
   ]
 })
 export class ListComponent implements OnInit {
 
 
-  @ViewChild(MatTable, { static: false }) table: MatTable<ListModel>;
+  @ViewChild(MatTable, { static: false }) table: MatTable<TechnologyApiModel>;
 
-  state: TechnologiesState;
+  state: TehcnologiesListState;
 
-  constructor(private store: Store<TechnologiesState>) { }
+  entities$: Observable<TechnologyApiModel[]>;
+
+  constructor(private store: Store<TehcnologiesListState>) { }
 
   ngOnInit() {
-    this.store.select(technologiesStateSelector).subscribe(
+
+    this.entities$ = this.store.select(technologiesEntitiesSelector);
+
+    this.store.select(technologiesListStateSelector).subscribe(
       state => {
         this.state = state;
       }
