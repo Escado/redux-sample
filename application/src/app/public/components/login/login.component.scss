@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    height: 70vh;
+    
+    & mat-card {
+        margin: auto;
+        padding: 2rem;
+    }
+}
+
+.login-button {
+    width: 100%;
+    position: relative;
+}

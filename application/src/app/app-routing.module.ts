@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TechnologiesListComponent } from './features/technologies-list/technologies-list.component';
-import { NavBarComponent } from './features/nav-bar/nav-bar.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: TechnologiesListComponent
+    loadChildren: () => import('./private/private.module').then(m => m.PrivateModule)
   },
   {
-    path: 'nav',
-    component: NavBarComponent
+    path: 'public',
+    loadChildren: () => import('./public/public.module').then(m => m.PublicModule)
   }
 ];
 
