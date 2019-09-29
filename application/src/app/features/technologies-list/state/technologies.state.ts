@@ -27,3 +27,7 @@ export const technologiesAppendStateSelector = createSelector(technologiesStateS
 export const technologiesListStateSelector = createSelector(technologiesStateSelector, state => state.listState);
 
 export const technologiesEntitiesSelector = createSelector(technologiesListStateSelector, state => state.entities);
+
+export const technologiesTotals = createSelector(
+    technologiesEntitiesSelector,
+    state => ({ total: state.length, average: state.reduce((acc, cur) => acc + Number(cur.rating), 0) / state.length }));

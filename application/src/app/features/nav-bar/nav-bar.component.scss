@@ -1,12 +1,14 @@
 nav {
-  height: 20vh;
+  height: 10vh;
   display: flex;
   background: url(https://escado.github.io/img/bg.jpeg);
   background-color: #575761;
-  filter: drop-shadow(0.1rem 0.1rem 0.1rem black);
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem rgb(7, 7, 7));
 
   & div {
     margin: auto;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem black);
+    color: whitesmoke;
   }
 
   & span {

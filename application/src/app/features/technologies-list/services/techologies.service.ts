@@ -14,13 +14,13 @@ export class TechnologiesService {
 
     getTechnologies(): Observable<TechnologyApiModel[]> {
         return this.http.get<ServiceResponseModel>('https://i3ovudx37a.execute-api.eu-north-1.amazonaws.com/default/app-personal').pipe(
-            delay(1000),
+            delay(500),
             map(x => x.technologies)
         );
     }
 
     appendTechnology(item: TechnologyApiModel): Observable<TechnologyApiModel> {
-        if (item.name.indexOf('FAIL') !==  -1) {
+        if (item.name && item.name.indexOf('FAIL') !==  -1) {
             return throwError('You asked for this!').pipe(
                 delay(1000)
             );

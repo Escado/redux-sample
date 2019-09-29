@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { technologiesReducer } from './state/reducers/technologies.reducer';
 import { TechnologiesAppendEffects } from './state/effects/technologies.append.effects';
 import { TechnologiesStateName } from './state/technologies.state';
+import { MatCardModule, MatCardSubtitle } from '@angular/material/card';
 
 
 
@@ -35,6 +36,7 @@ import { TechnologiesStateName } from './state/technologies.state';
     MatTableModule,
     MatOptionModule,
     MatSelectModule,
+    MatCardModule,
     CommonModule,
     FormsModule
   ],

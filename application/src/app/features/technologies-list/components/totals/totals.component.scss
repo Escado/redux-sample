@@ -1,3 +1,8 @@
 :host {
   margin: auto;
+  display: flex;
+  
+  & div {
+    margin: 0rem 2rem;
+  }
 }

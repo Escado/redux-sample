@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TechnologiesState, technologiesEntitiesSelector } from '../../state/technologies.state';
+import { TechnologiesState, technologiesEntitiesSelector, technologiesTotals } from '../../state/technologies.state';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-totals',
@@ -9,10 +11,12 @@ import { Store } from '@ngrx/store';
 })
 export class TotalsComponent implements OnInit {
 
+  total$: Observable<{ total: number, average: number }>;
+
   constructor(private store: Store<TechnologiesState>) { }
 
   ngOnInit() {
-    this.store.select(technologiesEntitiesSelector);
+    this.total$ = this.store.select(technologiesTotals);
   }
 
 }
