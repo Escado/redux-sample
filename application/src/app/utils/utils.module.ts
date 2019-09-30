@@ -7,12 +7,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
         NavBarComponent
     ],
     imports: [
+        CommonModule,
         StatesModule,
         MatButtonModule,
         MatInputModule,

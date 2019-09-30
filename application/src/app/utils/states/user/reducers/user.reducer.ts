@@ -7,13 +7,19 @@ export const userInitialState: UserState = {
 };
 
 const reducer = createReducer(userInitialState,
-    on(login, (state, action) => ({
-        ...state,
-        username: action.username
-    })),
-    on(logout, state => ({
-        ...state,
-        username: ''
+    on(login, (state, action) => {
+
+        return Object.assign({}, {
+            username: action.username
+        });
+
+        return {
+            ...state,
+            username: action.username
+        };
+    }),
+    on(logout, _ => ({
+        ...userInitialState
     }))
 );
 

@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-export const userStateName = 'user-state';
+export const userStateName = 'userState';
 
 export interface UserState {
     username: string;

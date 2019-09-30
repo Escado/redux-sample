@@ -1,5 +1,15 @@
 <nav>
-    <div>
+    <div class="logo">
         Redux Sample
+    </div>
+    <div class="user-info" *ngIf="username !== ''">
+        <div>
+            Hello, {{username}}!
+        </div>
+        <div>
+            <button class="login-button" mat-raised-button (keydown.enter)="onLogout()" (click)="onLogout()">
+                Log Out
+            </button>
+        </div>
     </div>
 </nav>

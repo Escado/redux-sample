@@ -6,12 +6,32 @@ nav {
   filter: drop-shadow(0.1rem 0.1rem 0.1rem rgb(7, 7, 7));
 
   & div {
-    margin: auto;
     filter: drop-shadow(0.1rem 0.1rem 0.1rem black);
     color: whitesmoke;
   }
 
+  & .logo {
+    margin: auto auto auto 15rem;
+  }
+
+  & .user-info {
+    margin: auto 10rem auto auto;
+    display: flex;
+
+    & div {
+      width: 100%;
+      margin: auto;
+      padding-left: 5rem;
+
+      & button {
+        padding-left: 1rem;
+        width: 100%;
+      }
+    }
+  }
+
+
   & span {
-      margin: auto 0 auto 10vw;
+    margin: auto 0 auto 10vw;
   }
 }
