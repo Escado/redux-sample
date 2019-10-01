@@ -5,7 +5,7 @@ import { transition, style, animate, trigger } from '@angular/animations';
 import { TehcnologiesListState, technologiesListStateSelector, technologiesEntitiesSelector } from '../../state/technologies.state';
 import { TechnologyApiModel } from '../../models/service.model';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { remove } from '../../state/actions/technologies.append.actions';
 
 @Component({
   selector: 'app-list',
@@ -48,5 +48,9 @@ export class ListComponent implements OnInit {
         this.state = state;
       }
     );
+  }
+
+  onRemove(item: TechnologyApiModel) {
+    this.store.dispatch(remove({item}));
   }
 }

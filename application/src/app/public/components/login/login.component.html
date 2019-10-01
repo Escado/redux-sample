@@ -9,5 +9,10 @@
             <input type="text" [(ngModel)]="username" matInput placeholder="Username">
         </mat-form-field>
     </div>
+    <div class="login-field">
+        <mat-form-field>
+            <input type="password" matInput placeholder="Password">
+        </mat-form-field>
+    </div>
     <button class="login-button" mat-raised-button (keydown.enter)="onLogin()" (click)="onLogin()">Login</button>
 </mat-card>

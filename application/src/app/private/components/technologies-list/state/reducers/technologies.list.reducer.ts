@@ -1,7 +1,7 @@
 import { TehcnologiesListState } from '../technologies.state';
 import { createReducer, on, Action } from '@ngrx/store';
 import { setError, set, load } from '../actions/technologies.actions';
-import { appendSuccess } from '../actions/technologies.append.actions';
+import { appendSuccess, remove } from '../actions/technologies.append.actions';
 
 export const technologiesListInitialState: TehcnologiesListState = {
     entities: [],
@@ -37,6 +37,15 @@ const reducer = createReducer(technologiesListInitialState,
             ...state,
             entities: [...action.technologies],
             loading: false
+        };
+    }),
+    on(remove, (state, action) => {
+        const id = state.entities.indexOf(action.item);
+        state.entities.splice(id, 1);
+
+        return {
+            ...state,
+            entities: [...state.entities]
         };
     })
 );
