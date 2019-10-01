@@ -1,5 +1,10 @@
 <mat-card class="example-card">
     <div class="login-field">
+        <mat-card-title *ngIf="state.error">
+            {{state.error}}
+        </mat-card-title>
+    </div>
+    <div class="login-field">
         <mat-form-field>
             <input type="text" [(ngModel)]="username" matInput placeholder="Username">
         </mat-form-field>

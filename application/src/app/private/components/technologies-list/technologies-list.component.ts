@@ -13,8 +13,6 @@ export class TechnologiesListComponent implements OnInit {
 
   constructor(private store: Store<TechnologiesState>) { }
 
-  state: TechnologiesState;
-
   ngOnInit() {
     this.store.dispatch(load());
   }

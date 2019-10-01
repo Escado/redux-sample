@@ -8,7 +8,7 @@ import { Observable, throwError, of } from 'rxjs';
 export class UserService {
 
     login(username: string): Observable<boolean> {
-        if (username.toLowerCase().startsWith('D')) {
+        if (username.toLowerCase().startsWith('k')) {
             return throwError('Bad username');
         }
         return of(true);

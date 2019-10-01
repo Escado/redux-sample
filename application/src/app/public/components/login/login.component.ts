@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   username: string;
 
+  state: UserState;
+
   private ngUnsubscribe = new Subject();
 
 
@@ -22,7 +24,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.store.dispatch(logout());
+
+    this.store.select(userStateSelector).pipe(
+      takeUntil(this.ngUnsubscribe)
+    ).subscribe(state => this.state = state);
+
     this.store.select(userUsernameSelector).pipe(
+      takeUntil(this.ngUnsubscribe),
       filter(username => !!username),
       tap(_ => this.router.navigate(['']))
     ).subscribe();

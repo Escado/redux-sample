@@ -1,21 +1,21 @@
-<div class="">
+<mat-card class="">
     <mat-form-field>
         <input type="text" [(ngModel)]="name" matInput placeholder="Tecnology name">
     </mat-form-field>
     <mat-form-field>
         <mat-label>Rating</mat-label>
         <mat-select value="16px" [(ngModel)]="rating">
-            <mat-option value="1">1</mat-option>
-            <mat-option value="2">2</mat-option>
-            <mat-option value="3">3</mat-option>
-            <mat-option value="4">4</mat-option>
-            <mat-option value="5">5</mat-option>
+            <mat-option value="1">★</mat-option>
+            <mat-option value="2">★★</mat-option>
+            <mat-option value="3">★★★</mat-option>
+            <mat-option value="4">★★★★</mat-option>
+            <mat-option value="5">★★★★★</mat-option>
         </mat-select>
     </mat-form-field>
     <section [@fadeIn] class="loader" *ngIf="state.loading || state.error">
         <span>{{state.error ? state.error: 'DATA IS BEING INSERTED....'}}</span>
     </section>
-</div>
+</mat-card>
 <div>
     <button [disabled]="state.loading || !!state.error" mat-raised-button (keydown.enter)="onAdd()" (click)="onAdd()">Add</button>
 </div>

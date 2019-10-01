@@ -1,25 +1,30 @@
 import { UserState } from '../user.state';
 import { createReducer, on, Action } from '@ngrx/store';
-import { login, logout } from '../actions/user.actions';
+import { login, logout, loginError, loginSuccess } from '../actions/user.actions';
 
 export const userInitialState: UserState = {
-    username: ''
+    username: '',
+    error: '',
+    loading: false
 };
 
 const reducer = createReducer(userInitialState,
-    on(login, (state, action) => {
-
-        return Object.assign({}, {
-            username: action.username
-        });
-
-        return {
+    on(login, (state) => ({
             ...state,
-            username: action.username
-        };
-    }),
+            loading: true
+        })),
     on(logout, _ => ({
         ...userInitialState
+    })),
+    on(loginSuccess, (state, action) => ({
+        ...state,
+        loading: false,
+        username: action.username
+    })),
+    on(loginError, (state, action) => ({
+        ...state,
+        error: action.error,
+        loading: false
     }))
 );
 

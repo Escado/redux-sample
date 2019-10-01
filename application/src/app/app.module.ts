@@ -13,19 +13,22 @@ import { EffectsModule } from '@ngrx/effects';
 import { PublicModule } from './public/public.module';
 import { PrivateModule } from './private/private.module';
 import { UtilsModule } from './utils/utils.module';
+import { MetaLoggingEffects } from './utils/meta-effects/logging.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([MetaLoggingEffects]),
+    StoreDevtoolsModule.instrument(),
+    HttpClientModule,
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument(),
-    HttpClientModule,
-    EffectsModule.forRoot([]),
+
     PublicModule,
     PrivateModule,
     UtilsModule
