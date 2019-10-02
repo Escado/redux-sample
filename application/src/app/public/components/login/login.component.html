@@ -5,14 +5,14 @@
         </mat-card-title>
     </div>
     <div class="login-field">
-        <mat-form-field>
+        <mat-form-field color="accent">
             <input type="text" [(ngModel)]="username" matInput placeholder="Username">
         </mat-form-field>
     </div>
     <div class="login-field">
-        <mat-form-field>
+        <mat-form-field color="accent">
             <input type="password" matInput placeholder="Password">
         </mat-form-field>
     </div>
-    <button class="login-button" mat-raised-button (keydown.enter)="onLogin()" (click)="onLogin()">Login</button>
+    <button class="login-button" color="primary" mat-raised-button (keydown.enter)="onLogin()" (click)="onLogin()">Login</button>
 </mat-card>

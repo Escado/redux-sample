@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Store } from '@ngrx/store';
-import { transition, style, animate, trigger } from '@angular/animations';
+import { transition, style, animate, trigger, query } from '@angular/animations';
 import { TehcnologiesListState, technologiesListStateSelector, technologiesEntitiesSelector } from '../../state/technologies.state';
 import { TechnologyApiModel } from '../../models/service.model';
 import { Observable } from 'rxjs';
@@ -24,6 +24,10 @@ import { remove } from '../../state/actions/technologies.append.actions';
       transition(':enter', [
         style({ lineHeight: 0, height: 0, opacity: 0 }),
         animate(300)
+      ]),
+      transition(':leave', [
+
+        animate(300, style({ lineHeight: 0, height: 0, opacity: 0 }))
       ])
     ])
   ]
@@ -48,6 +52,12 @@ export class ListComponent implements OnInit {
         this.state = state;
       }
     );
+  }
+
+  isItemInList(item: TechnologyApiModel) {
+    console.log('awdawd');
+    console.log(this.state.entities.find(x => x.name === item.name) !== null);
+    return this.state.entities.find(x => x.name === item.name) !== null;
   }
 
   onRemove(item: TechnologyApiModel) {
