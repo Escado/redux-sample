@@ -13,10 +13,16 @@ export class TechnologiesService {
     }
 
     getTechnologies(): Observable<TechnologyApiModel[]> {
-        return this.http.get<ServiceResponseModel>('https://i3ovudx37a.execute-api.eu-north-1.amazonaws.com/default/app-personal').pipe(
-            delay(500),
-            map(x => x.technologies)
-        );
+        return of(
+            [
+                { name: 'C#', rating: 5 },
+                { name: 'Python', rating: 5 },
+                { name: 'SQL', rating: 3 },
+                { name: 'Java', rating: 2 },
+                { name: 'Angular', rating: 4 },
+                { name: 'MVC', rating: 4 }
+            ]
+        ).pipe(delay(1000));
     }
 
     appendTechnology(item: TechnologyApiModel): Observable<TechnologyApiModel> {
