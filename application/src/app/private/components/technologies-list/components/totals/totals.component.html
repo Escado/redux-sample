@@ -3,7 +3,7 @@
         <mat-card-subtitle>
             Total entries:
         </mat-card-subtitle>
-        <mat-card-content [@fadeIn]="total">
+        <mat-card-content [@fadeIn]="(total$ | async).total">
             {{(total$ | async).total ? (total$ | async).total : '---'}}
         </mat-card-content>
     </mat-card>
@@ -13,7 +13,7 @@
         <mat-card-subtitle>
             Average rating
         </mat-card-subtitle>
-        <mat-card-content [@fadeIn]="average">
+        <mat-card-content [@fadeIn]="(total$ | async).average">
             {{((total$ | async).average ? (total$ | async).average : 0) | number}}
         </mat-card-content>
     </mat-card>

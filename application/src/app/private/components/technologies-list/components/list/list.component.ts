@@ -54,12 +54,6 @@ export class ListComponent implements OnInit {
     );
   }
 
-  isItemInList(item: TechnologyApiModel) {
-    console.log('awdawd');
-    console.log(this.state.entities.find(x => x.name === item.name) !== null);
-    return this.state.entities.find(x => x.name === item.name) !== null;
-  }
-
   onRemove(item: TechnologyApiModel) {
     this.store.dispatch(remove({item}));
   }

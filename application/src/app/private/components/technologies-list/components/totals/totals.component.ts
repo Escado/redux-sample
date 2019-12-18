@@ -22,17 +22,9 @@ export class TotalsComponent implements OnInit {
 
   total$: Observable<{ total: number, average: number }>;
 
-  total: number;
-  average: number;
-
   constructor(private store: Store<TechnologiesState>) { }
 
   ngOnInit() {
     this.total$ = this.store.select(technologiesTotals);
-    this.store.select(technologiesTotals).subscribe(x => {
-      this.total = x.total;
-      this.average = x.average;
-    });
   }
-
 }

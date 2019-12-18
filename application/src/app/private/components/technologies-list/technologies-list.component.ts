@@ -16,5 +16,4 @@ export class TechnologiesListComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(load());
   }
-
 }
